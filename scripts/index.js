@@ -4,11 +4,15 @@ const senhaLogin = document.getElementById('senha')
 
 formLogin.addEventListener('submit', (e)=>{
     e.preventDefault()
-    if(emailLogin.value == sessionStorage.getItem("email")&&senhaLogin.value==sessionStorage.getItem("senha")){
-        console.log("ok")
+    if(
+        emailLogin.value == sessionStorage.getItem("email")
+        &&senhaLogin.value==sessionStorage.getItem("senha")
+    )
+    {
+        window.location.href="http://localhost:5500/produtos.html"
     }
     else{
-        console.log("errado")
+        /*caso login de errado*/
     }
 
 })
