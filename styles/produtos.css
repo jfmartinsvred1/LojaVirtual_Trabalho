@@ -52,6 +52,7 @@ table {
     padding: 4px;
     margin: 0px;
     animation: pretoParaOBranco 1s infinite alternate;
+    z-index: 9999;
 }
 @keyframes pretoParaOBranco{
     0%{
@@ -74,6 +75,7 @@ table {
     margin: 0px;
     display: flex;
     justify-content: space-between;
+    z-index: 9999;
 }
 #logoNameWrited{
     color: white;
@@ -90,15 +92,41 @@ table {
 }
 
 .products{
-    margin-top: 56px;
+    background-color: rgb(255, 255, 245);
+    margin-top: 84px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
 
 }
 .sneaker{
+    text-align: center;
     width: calc(33.33% - 32px);
+    margin: 16px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.sneaker h3{
+    font-size: 24px;
+}
+.sneaker h4{
+    font-size: 28px;
+    font-style: italic;
+    color: rgb(0, 0, 0);
+    text-decoration: underline;
 }
 .sneaker img{
     max-width: 100%;
+    height: auto;
+    margin: 4px;
+}
+.sneaker img:hover{
+    transform: scale(1.02);
+}
+#promo{
+    color: rgb(255, 0, 0);
+}
+
+footer{
+    background-color: black;
+    height: 200px;
 }
