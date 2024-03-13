@@ -8,5 +8,5 @@ formCadastro.addEventListener('submit',(e)=>{
     sessionStorage.setItem("nome", nomeCadastro.value)
     sessionStorage.setItem("email", emailCadastro.value)
     sessionStorage.setItem("senha", senhaCadastro.value)
-    window.location.href="file:///C:/Users/Joao/Desktop/Projetos/LojaVirtual_Trabalho/index.html"
+    window.location.href="../index.html"
 })
