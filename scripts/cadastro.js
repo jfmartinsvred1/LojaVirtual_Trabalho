@@ -8,5 +8,5 @@ formCadastro.addEventListener('submit',(e)=>{
     sessionStorage.setItem("nome", nomeCadastro.value)
     sessionStorage.setItem("email", emailCadastro.value)
     sessionStorage.setItem("senha", senhaCadastro.value)
-    window.location.href="http://localhost:5500/index.html"
+    window.location.href="../index.html"
 })
