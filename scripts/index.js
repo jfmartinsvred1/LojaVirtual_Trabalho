@@ -9,7 +9,7 @@ formLogin.addEventListener('submit', (e)=>{
         &&senhaLogin.value==sessionStorage.getItem("senha")
     )
     {
-        window.location.href="http://localhost:5500/produtos.html"
+        window.location.href="../produtos.html"
     }
     else{
         /*caso login de errado*/
