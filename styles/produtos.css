@@ -85,6 +85,10 @@ table {
 }
 #marketCart{
     padding-right: 24px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }
 #marketCart img{
     width: 48px;
