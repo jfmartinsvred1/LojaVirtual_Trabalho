@@ -2,9 +2,6 @@ const formLogin = document.getElementById('form-login');
 const emailLogin = document.getElementById('email')
 const senhaLogin = document.getElementById('senha')
 
-console.log(sessionStorage.getItem("email"))
-console.log(sessionStorage.getItem("senha"))
-
 formLogin.addEventListener('submit', (e)=>{
     e.preventDefault()
     if(
