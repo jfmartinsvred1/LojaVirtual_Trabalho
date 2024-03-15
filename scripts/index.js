@@ -16,5 +16,5 @@ formLogin.addEventListener('submit', (e)=>{
     }
 
 })
-
+console.log(emailLogin)
 
