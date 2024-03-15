@@ -2,6 +2,7 @@ const nomeCliente = document.getElementById("nomeCliente")
 .innerText=`Olá, ${sessionStorage.getItem("nome")}`
 
 const divProducts = document.querySelector('.products')
+const divAlunos = document.querySelector('.gitHubs')
 
 const produtos= 
 [
@@ -43,7 +44,26 @@ const produtos=
     }
 ]
 
-function retornaHtml(){
+const alunos = [
+    {
+        nome:"João Victor Fernandes Martins",
+        gitHub:"https://github.com/jfmartinsvred1"
+    },
+    {
+        nome:"Leandro",
+        gitHub:"https://github.com/leanstepcop"
+    },
+    {
+        nome:"Saulo",
+        gitHub:"https://github.com/saulomvvr"
+    },
+    {
+        nome:"Guilherme Knust",
+        gitHub:"https://github.com/leanstepcop"
+    },
+]
+
+function retornaHtmlProdutos(){
     let html=``
     for(let i=0;i<=produtos.length-1;i++){
         html += `
@@ -53,8 +73,21 @@ function retornaHtml(){
             <h4>R$ ${produtos[i].preco}</h4>
         </div>`
     }
-    return html
+    divProducts.innerHTML=html
 }
 
-divProducts.innerHTML=retornaHtml()
+function retornaFooter(){
+    let html=``
+    for(let i=0;i<=alunos.length-1;i++){
+        html += `
+        <div class="aluno">
+                <img src="${alunos[i].gitHub}.png" alt="Foto de ${alunos[i].nome}">
+                <h4>${alunos[i].nome}</h4>
+        </div>
+        `
+    }
+    divAlunos.innerHTML=html
+}
+retornaHtmlProdutos()
+retornaFooter()
 

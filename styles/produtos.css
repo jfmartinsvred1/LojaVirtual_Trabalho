@@ -133,4 +133,27 @@ table {
 footer{
     background-color: black;
     height: 200px;
+    display: flex;
+    justify-content: center;
+}
+
+.gitHubs{
+    display: flex;
+    justify-content: space-around;
+}
+.aluno{
+    padding: 32px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.aluno img{
+    width: 80px;
+    border-radius: 50%;
+    padding-bottom: 8px;
+}
+.aluno h4{
+    color: white;
 }
