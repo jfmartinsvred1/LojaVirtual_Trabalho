@@ -15,11 +15,11 @@
     <section class="login">
         <form id="form-Cadastro">
             <label for="nome">Nome</label>
-            <input type="text" name="nome" id="nomeCadastro">
+            <input type="text" name="nome" id="nomeCadastro" required="required" pattern="[a-zA-ZáãâéêóôõúíîÁÃÂÉÊÍÎÓÔÕÚ\s]+$">
             <label for="email">Email</label>
-            <input type="text" name="email" id="emailCadastro" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$">
+            <input type="text" name="email" id="emailCadastro" required="required" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" title="user@example.com">
             <label for="senha">Senha</label>
-            <input type="password" name="senha" id="senhaCadastro">
+            <input type="password" name="senha" id="senhaCadastro" required="required" pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])[a-zA-Z0-9@#$!]{6,10}$" title="A senha deve conter entre 6 a 10 digitos e pelo menos uma letra maiúscula, uma minúscula e um número">
             <button type="submit">Cadastrar</button>
         </form>
     </section>
