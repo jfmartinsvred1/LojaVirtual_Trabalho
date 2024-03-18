@@ -78,14 +78,11 @@ function retornaHtmlProdutos(){
         <div class="sneaker">
             <img src=${produtos[i].img} alt=${produtos[i].nome}>
             <h3>${produtos[i].nome}</h3>
-            <h4>De 
+            <h4 id="promo">De 
                 <s>
                     R$ ${produtos[i].preco} 
                 </s>
-                por apenas R$ 
-                <b id="promo">
-                    ${produtoComDesconto.toFixed(2)}
-                </b>
+                por apenas R$ ${produtoComDesconto.toFixed(2)}
             </h4>
         </div>`
         }
