@@ -53,19 +53,23 @@ const produtos=
 const alunos = [
     {
         nome:"João Victor Fernandes Martins",
+        foto:"https://github.com/jfmartinsvred1.png",
         gitHub:"https://github.com/jfmartinsvred1"
     },
     {
         nome:"Leandro",
+        foto:"https://github.com/leanstepcop.png",
         gitHub:"https://github.com/leanstepcop"
     },
     {
         nome:"Saulo",
+        foto:"https://github.com/saulomvvr.png",
         gitHub:"https://github.com/saulomvvr"
     },
     {
         nome:"Guilherme Knust",
-        gitHub:"https://github.com/leanstepcop"
+        foto:"https://media.licdn.com/dms/image/D4D35AQEjGyFULQL8FA/profile-framedphoto-shrink_800_800/0/1710661715585?e=1711389600&v=beta&t=dsOcAzISuOYFaIb0zixAfQL5PJkL23vgsTn3i1lsrdY",
+        gitHub:""
     },
 ]
 
@@ -103,7 +107,7 @@ function retornaFooter(){
     for(let i=0;i<=alunos.length-1;i++){
         html += `
         <div class="aluno">
-                <img src="${alunos[i].gitHub}.png" alt="Foto de ${alunos[i].nome}">
+                <img src="${alunos[i].foto}" alt="Foto de ${alunos[i].nome}">
                 <h4>${alunos[i].nome}</h4>
         </div>
         `
