@@ -117,3 +117,13 @@ function retornaFooter(){
 retornaHtmlProdutos()
 retornaFooter()
 
+// let cep="27262570"
+//  async function retornaCep(cep){
+//     const response = await fetch('https://viacep.com.br/ws/27262570/json/',{
+//         method:"GET"
+//     })
+//     const data = response.json()
+//     console.log(await data)
+//  }
+
+//  retornaCep(cep)
