@@ -108,6 +108,7 @@ table {
     width: calc(33.33% - 32px);
     margin: 16px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    cursor: pointer;
 }
 .sneaker h3{
     font-size: 24px;

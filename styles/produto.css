@@ -153,6 +153,7 @@ table {
 .productImages{
     width: 50%;
     height: auto;
+    cursor: pointer;
 }
 .productGallery{
     display: grid;
