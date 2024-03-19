@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sneaker's House</title>
+    <link rel="stylesheet" href="./styles/produto.css">
+</head>
+<body>
+    <!-- Topo da página -->
+    <div class="headerInfo">
+        <p>Produtos 100% originais!</p>
+    </div>
+    <!-- Menu fixado ao topo -->
+    <div class="fixedMenu">
+        <div id="logoNameWrited">
+            <h1>Sneaker's House</h1>
+        </div>
+        <div id="marketCart">
+            <h3 id="nomeCliente"></h3>
+            <a href="carrinho.html">
+                <img src="images/pngwing.com.png" alt="Carrinho de compras">
+            </a>
+        </div>
+    </div>
+    <!-- Produto -->
+
+    <div class="product">
+        <div id="myModal" class="expandingImg">
+            <span class="closeImg" onclick="closeModal()">&times;</span>
+            <img id="expandedImg" class="expanded-image">
+        </div>
+        <div class="productImages">
+            <div class="productGallery">
+                <img src="images/productsImages/Product1/Tênis-Nike-Air-Max-90-Masculino-1.jpg" alt="Image 1" onclick="expandImage(this);">
+                <img src="images/productsImages/Product1/Tênis Nike Air Max 90 Masculino 2.jpg" alt="Image 2" onclick="expandImage(this);">
+                <img src="images/productsImages/Product1/Tênis Nike Air Max 90 Masculino 3.jpg" alt="Image 3" onclick="expandImage(this);">
+                <img src="images/productsImages/Product1/Tênis Nike Air Max 90 Masculino 4.jpg" alt="Image 4" onclick="expandImage(this);">
+                <img src="images/productsImages/Product1/Tênis Nike Air Max 90 Masculino 5.jpg" alt="Image 5" onclick="expandImage(this);">
+                <img src="images/productsImages/Product1/Tênis Nike Air Max 90 Masculino 6.jpg" alt="Image 6" onclick="expandImage(this);">
+            </div>
+        </div>
+        <div class="productInfo">
+            <h1>Tênis Nike Air Max 90 Masculino</h1>
+        </div>
+    </div>
+
+      <script>
+      function expandImage(img) {
+          var modal = document.getElementById("myModal");
+          var expandedImg = document.getElementById("expandedImg");
+      
+          modal.style.display = "block";
+          expandedImg.src = img.src;
+      }
+      function closeModal() {
+          document.getElementById("myModal").style.display = "none";
+      }
+      </script>
+</body>
+</html>
