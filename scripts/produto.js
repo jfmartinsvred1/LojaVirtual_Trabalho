@@ -1,5 +1,6 @@
 let produto = JSON.parse((sessionStorage.getItem("produtoClickado")))
 const divProduct= document.querySelector('.product')
+const h3Inicio = document.querySelector('.h3Inicio')
 function expandImage(img) {
     var modal = document.getElementById("myModal");
     var expandedImg = document.getElementById("expandedImg");
@@ -12,6 +13,10 @@ function closeModal() {
 }
 
 let image =[]
+
+h3Inicio.addEventListener('click',()=>{
+    window.location.href='../produtos.html'
+})
 
 function retornaImgs(){
     let url=produto.nome.replace(/ /g,"-")

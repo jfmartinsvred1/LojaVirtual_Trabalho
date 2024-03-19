@@ -79,10 +79,18 @@ table {
 }
 #logoNameWrited{
     color: white;
-    font-size: 48px;
+    font-size: 64px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, Courier, monospace;
     padding-left: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    align-items:baseline;
 }
+#logoNameWrited h3{
+    font-size: 32px;
+}
+
 #marketCart{
     padding-right: 24px;
     color: white;
