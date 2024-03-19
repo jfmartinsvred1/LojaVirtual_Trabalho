@@ -1,8 +1,15 @@
+
 const nomeCliente = document.getElementById("nomeCliente")
 .innerText=`Olá, ${sessionStorage.getItem("nome")}`
 
 const divProducts = document.querySelector('.products')
 const divAlunos = document.querySelector('.gitHubs')
+
+function transicao(id){
+    let produto = produtos.find(produto=>produto.id==id)
+    sessionStorage.setItem("produtoClickado", JSON.stringify(produto))
+    window.location.href="../produto.html"
+}
 
 const produtos= 
 [
@@ -50,6 +57,7 @@ const produtos=
     }
 ]
 
+
 const alunos = [
     {
         nome:"João Victor Fernandes Martins",
@@ -79,7 +87,7 @@ function retornaHtmlProdutos(){
         if(produtos[i].desconto!=0){
             let produtoComDesconto = produtos[i].preco * (1-(produtos[i].desconto/100))
             html += `
-            <div class="sneaker">
+            <div class="sneaker" onClick="transicao(${produtos[i].id})">
                 <img src=${produtos[i].img} alt=${produtos[i].nome}>
                 <h3>${produtos[i].nome}</h3>
                 <h4 id="promo">De 
@@ -92,7 +100,7 @@ function retornaHtmlProdutos(){
         }
         else{
             html += `
-            <div class="sneaker">
+            <div class="sneaker" onClick="transicao(${produtos[i].id})">
                 <img src=${produtos[i].img} alt=${produtos[i].nome}>
                 <h3>${produtos[i].nome}</h3>
                 <h4>R$ ${produtos[i].preco}</h4>

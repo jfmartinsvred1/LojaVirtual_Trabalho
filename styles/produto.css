@@ -98,14 +98,22 @@ table {
     display: flex;
     margin-left: 10px;
     margin-top: 92px;
+    flex-direction: row;
 }
 .productInfo{
     margin-left: 30px;
-    display: inline-flex;
+    display: flex;
+    flex-direction: column;
+    
 }
 .productInfo h1{
     font-style: italic;
-    font-size: 56px;
+    font-size: 64px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.productInfo h2{
+    font-style: italic;
+    font-size: 32px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 .expandingImg{

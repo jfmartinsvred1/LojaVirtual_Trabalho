@@ -6,7 +6,7 @@ formLogin.addEventListener('submit', (e)=>{
     e.preventDefault()
     if(
         emailLogin.value == sessionStorage.getItem("email")
-        &&senhaLogin.value==sessionStorage.getItem("senha")
+        &&senhaLogin.value == sessionStorage.getItem("senha")
     )
     {
         window.location.href="../produtos.html"
