@@ -83,50 +83,30 @@ const alunos = [
 
 function adicionarAoCarrinho(id){
     let productTemp=produtos.find(p=>p.id==id)
-    let produtoDoCarrinho={}
-    if(sessionStorage.getItem('carrinho')==null){
-        produtoDoCarrinho=[{
-            id:productTemp.id,
-            img:productTemp.img,
-            nome:productTemp.nome,
-            preco:productTemp.preco,
-            desconto:productTemp.desconto,
-            quantidade:1
-        }]
-        sessionStorage.setItem('carrinho',JSON.stringify(produtoDoCarrinho))
+    let produtoDoCarrinho ={
+        id:productTemp.id,
+        img:productTemp.img,
+        nome:productTemp.nome,
+        preco:productTemp.preco,
+        desconto:productTemp.desconto,
+        quantidade:1
+    }
+    let produtosDoCarrinho = JSON.parse(sessionStorage.getItem('carrinho'))
+    if(produtosDoCarrinho==null){
+        produtosDoCarrinho=[]
+        produtosDoCarrinho.push(produtoDoCarrinho)
     }
     else{
-        let produtosDoCarrinho = JSON.parse(sessionStorage.getItem('carrinho'))
         if(produtosDoCarrinho.find(p=>p.id==id)==null){
-            produtoDoCarrinho={
-                id:productTemp.id,
-                img:productTemp.img,
-                nome:productTemp.nome,
-                preco:productTemp.preco,
-                desconto:productTemp.desconto,
-                quantidade:1
-            }
             produtosDoCarrinho.push(produtoDoCarrinho)
-            
         }
         else{
-            let productASerAlterado = produtosDoCarrinho.find(p=>p.id==id)
-            if(productASerAlterado.quantidade<9){
-                produtoDoCarrinho={
-                    id:productTemp.id,
-                    img:productTemp.img,
-                    nome:productTemp.nome,
-                    preco:productTemp.preco,
-                    desconto:productTemp.desconto,
-                    quantidade:(productASerAlterado.quantidade+1)
-                }
-                for(let i=0;i<produtosDoCarrinho.length;i++){
-                    produtosDoCarrinho[i]=produtoDoCarrinho
-                }
-            }
+            if(produtosDoCarrinho.find(p=>p.id==id).quantidade < 9)
+            produtosDoCarrinho.find(p=>p.id==id).quantidade+=1
         }
-        sessionStorage.setItem('carrinho',JSON.stringify(produtosDoCarrinho))
+            
     }
+    sessionStorage.setItem('carrinho',JSON.stringify(produtosDoCarrinho))
 }
 
 function retornaHtmlProdutos(){
@@ -175,13 +155,3 @@ function retornaFooter(){
 retornaHtmlProdutos()
 retornaFooter()
 
-// let cep="27262570"
-//  async function retornaCep(cep){
-//     const response = await fetch('https://viacep.com.br/ws/27262570/json/',{
-//         method:"GET"
-//     })
-//     const data = response.json()
-//     console.log(await data)
-//  }
-
-//  retornaCep(cep)
