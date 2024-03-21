@@ -81,30 +81,80 @@ const alunos = [
     },
 ]
 
+function adicionarAoCarrinho(id){
+    let productTemp=produtos.find(p=>p.id==id)
+    let produtoDoCarrinho={}
+    if(sessionStorage.getItem('carrinho')==null){
+        produtoDoCarrinho=[{
+            id:productTemp.id,
+            img:productTemp.img,
+            nome:productTemp.nome,
+            preco:productTemp.preco,
+            desconto:productTemp.desconto,
+            quantidade:1
+        }]
+        sessionStorage.setItem('carrinho',JSON.stringify(produtoDoCarrinho))
+    }
+    else{
+        let produtosDoCarrinho = JSON.parse(sessionStorage.getItem('carrinho'))
+        if(produtosDoCarrinho.find(p=>p.id==id)==null){
+            produtoDoCarrinho={
+                id:productTemp.id,
+                img:productTemp.img,
+                nome:productTemp.nome,
+                preco:productTemp.preco,
+                desconto:productTemp.desconto,
+                quantidade:1
+            }
+            produtosDoCarrinho.push(produtoDoCarrinho)
+            
+        }
+        else{
+            let productASerAlterado = produtosDoCarrinho.find(p=>p.id==id)
+            if(productASerAlterado.quantidade<9){
+                produtoDoCarrinho={
+                    id:productTemp.id,
+                    img:productTemp.img,
+                    nome:productTemp.nome,
+                    preco:productTemp.preco,
+                    desconto:productTemp.desconto,
+                    quantidade:(productASerAlterado.quantidade+1)
+                }
+                for(let i=0;i<produtosDoCarrinho.length;i++){
+                    produtosDoCarrinho[i]=produtoDoCarrinho
+                }
+            }
+        }
+        sessionStorage.setItem('carrinho',JSON.stringify(produtosDoCarrinho))
+    }
+}
+
 function retornaHtmlProdutos(){
     let html=``
     for(let i=0;i<=produtos.length-1;i++){
         if(produtos[i].desconto!=0){
             let produtoComDesconto = produtos[i].preco * (1-(produtos[i].desconto/100))
             html += `
-            <div class="sneaker" onClick="transicao(${produtos[i].id})">
-                <img src=${produtos[i].img} alt=${produtos[i].nome}>
-                <h3>${produtos[i].nome}</h3>
-                <h4 id="promo">De 
+            <div class="sneaker">
+                <img src=${produtos[i].img} alt=${produtos[i].nome} onClick="transicao(${produtos[i].id})">
+                <h3 onClick="transicao(${produtos[i].id})">${produtos[i].nome}</h3>
+                <h4 id="promo" onClick="transicao(${produtos[i].id})">De 
                     <s>
                         R$ ${produtos[i].preco} 
                     </s>
                     por apenas R$ ${produtoComDesconto.toFixed(2)}
                 </h4>
+                <img src="../images/adicionar-produto.png" class="iconeAdcionarProduto" onClick="adicionarAoCarrinho(${produtos[i].id})">
             </div>`
         }
         else{
             html += `
-            <div class="sneaker" onClick="transicao(${produtos[i].id})">
-                <img src=${produtos[i].img} alt=${produtos[i].nome}>
-                <h3>${produtos[i].nome}</h3>
-                <h4>R$ ${produtos[i].preco}</h4>
-            </div>`
+                <div class="sneaker">
+                    <img src=${produtos[i].img} alt=${produtos[i].nome} onClick="transicao(${produtos[i].id})">
+                    <h3 onClick="transicao(${produtos[i].id})">${produtos[i].nome}</h3>
+                    <h4 onClick="transicao(${produtos[i].id})">R$ ${produtos[i].preco}</h4>
+                    <img src="../images/adicionar-produto.png" class="iconeAdcionarProduto" onClick="adicionarAoCarrinho(${produtos[i].id})">
+                </div>`
         }
     }
     divProducts.innerHTML=html
