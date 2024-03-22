@@ -7,14 +7,20 @@ produtosDoCarrinho.forEach(function(nome) {
 
 
 function removerProdutoDoCarrinho(id){
-    console.log(btnRemove)
-    // produtosDoCarrinho.forEach(function(nome) {
-    //     if(nome.id!=id){
-    //         console.log(nome)
-    //         produtos.push(nome)
-    //     }
-    //   });
+    produtos=produtos.filter(p=>p.id!==id)
+    sessionStorage.setItem('carrinho',JSON.stringify(produtos))
+    window.location.reload()
+}
 
+function alteraQuantidade(value,id){
+    if(value <=9){
+        produtos.find(p=>p.id==id).quantidade=value
+        sessionStorage.setItem('carrinho',JSON.stringify(produtos))
+    }
+    else{
+        window.location.reload()
+    }
+    
 }
 
 function retornaHtml(){
@@ -33,11 +39,11 @@ function retornaHtml(){
                 R$ ${produtos[i].preco}
             </th>
             <th>
-                <input class="quantidade-input" id="quantidade" 
+                <input class="quantidade-input" id="quantidade" onClick="alteraQuantidade(value,${produtos[i].id})"
                 value=${produtos[i].quantidade} 
                 type="number" placeholder="0">
             </th>
-            <th id="valor-total">R$ ${(produtos[i].preco * (1-produtos[i].desconto/100)).toFixed(2)}</th>
+            <th id="valor-total">R$ ${(((produtos[i].preco * (1-produtos[i].desconto/100)))*produtos[i].quantidade).toFixed(2)}</th>
             <th class="btn-remove"><i class='bx bxs-x-circle' onClick="removerProdutoDoCarrinho(${produtos[i].id})"></i></th>
         </tr>`
         
