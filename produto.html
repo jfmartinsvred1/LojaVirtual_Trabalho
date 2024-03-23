@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sneaker's House</title>
-    <link rel="stylesheet" href="./styles/produtos.css">
+    <link rel="stylesheet" href="./styles/produto.css">
     <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
 </head>
-
 <body>
     <!-- Topo da página -->
     <div class="headerInfo">
@@ -18,6 +16,7 @@
     <div class="fixedMenu">
         <div id="logoNameWrited">
             <h1>Sneaker's House</h1>
+            <h3 class="h3Inicio">Inicio</h3>
         </div>
         <div id="marketCart">
             <h3 id="nomeCliente"></h3>
@@ -26,14 +25,19 @@
             </a>
         </div>
     </div>
-    <!-- Produtos -->
-    <div class="products">
-    </div>
-    <footer>
-        <div class="gitHubs">
-        </div>
-    </footer>
-    <script src="./scripts/produtos.js"></script>
-</body>
+    <!-- Produto -->
 
+    <div class="product">
+        <div id="myModal" class="expandingImg">
+            <span class="closeImg" onclick="closeModal()">&times;</span>
+            <img id="expandedImg" class="expanded-image">
+        </div>
+        <div class="productImages">
+        </div>
+        <div class="productInfo">
+            <h1>Tênis Nike Air Max 90 Masculino</h1>
+        </div>
+    </div>
+    <script src="./scripts/produto.js"></script>
+</body>
 </html>

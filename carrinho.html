@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Sneaker`s House</title>
     <link rel="stylesheet" href="styles/carrinho.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,19 +35,23 @@
                             <th>remove</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="produtos">
                         <tr>
                             <th>
                                 <div class="product">
-                                    <img src="https://picsum.photos/100/120" width="" alt="imagem do produto" width=""
-                                        alt="imagem do produto">
+                                    <img 
+                                    src="https://picsum.photos/100/120" 
+                                    width="" 
+                                    alt="imagem do produto" 
+                                    width=""
+                                    alt="imagem do produto">
                                     <div class="info">
                                         <div class="name" id="nome-produto">Jordan Low OG</div>
                                     </div>
                                 </div>
                             </th>
                             <th id="valor-produto">R$1099</th>
-                            <th><input class="quantidade-input" id="quantidade" type="number" placeholder="0"></th>
+                            <th><input class="quantidade-input" id="quantidade" type="number" pattern="[0-9]" placeholder="0"></th>
                             <th id="valor-total">R$1099</th>
                             <th class="btn-remove"><i class='bx bxs-x-circle'></i></th>
                         </tr>
@@ -61,8 +65,8 @@
                     </header>
                     <div class="info">
                         <span class="calculo-tittle">Não sabe seu cep? Procure <a
-                                href="https://buscacepinter.correios.com.br/app/endereco/index.php" target="_blank">
-                                aqui </a>
+                                href="https://buscacepinter.correios.com.br/app/endereco/index.php" target="_blank">                      
+                                 aqui </a>
                         </span>
                     </div>
                     <form>
@@ -82,7 +86,7 @@
             </aside>
         </div>
     </main>
-
+    <script src="./scripts/carrinho.js"></script>
 </body>
 
 </html>
