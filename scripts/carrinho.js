@@ -4,22 +4,12 @@ let produtosDoCarrinho = JSON.parse(sessionStorage.getItem('carrinho'));
 const h3Inicio = document.querySelector('.h3Inicio')
 const cep1=document.getElementById('CEP1')
 const cep2=document.getElementById('CEP2')
-const btnSubmit=document.getElementById('submit')
+const btnSubmit=document.getElementById('cepForm')
 const btnPagamento = document.querySelector('.finalizar-compra')
 const sub_total=document.querySelector('.sub-total');
 const total= document.getElementById('totalCalculado')
+let frete=0
 
-
-cep1.addEventListener('input',()=>{
-    if(cep1.value.length==5){
-        cep2.focus()
-    }
-})
-cep2.addEventListener('keydown',(e)=>{
-    if(cep2.value.length==0&&e.keyCode===8){
-        cep1.focus()
-    }
-})
 h3Inicio.addEventListener('click',()=>{
     window.location.href='../produtos.html'
 })
@@ -30,8 +20,6 @@ if(produtosDoCarrinho!==null){
         produtos.push(nome)
       });
 }
-
-
 
 function removerProdutoDoCarrinho(id){
     produtos=produtos.filter(p=>p.id!==id)
@@ -59,17 +47,15 @@ function alteraQuantidade(value, id) {
     }
 
 }
-const frete = 100
 
 function calculaValorTotal(){
     let valor=0
     for (let i = 0; i < produtos.length; i++){
         valor+=(produtos[i].preco*(1-(produtos[i].desconto/100)))*produtos[i].quantidade
     }
-    return valor.toFixed(2)
+    return valor
 }
 
-const valorTotal = calculaValorTotal() 
 
 function retornaHtml() {
     let html = ``
@@ -98,8 +84,6 @@ function retornaHtml() {
     }
     tbody.innerHTML = html
 }
-retornaHtml()
-
 if (produtos.length > 0) {
     btnPagamento.classList.remove('hidden-block')
     btnPagamento.addEventListener("click", () => {
@@ -108,9 +92,32 @@ if (produtos.length > 0) {
 } else {
     btnPagamento.classList.add('hidden-block')
 }
+
+const cem=100.00
+const zero=0.00
+let valorTotal = calculaValorTotal() 
+
+frete=sessionStorage.getItem('frete')
+
+
+if(frete==null||frete=='0'){
+    frete=0.00
+}
 function retornaTotal(){
+    let valorFreteTotal = sessionStorage.getItem('frete')
+    if(valorFreteTotal=='0'||valorFreteTotal==0){
+        valorFreteTotal=0.0
+    }
+    if(valorFreteTotal=='100'||valorFreteTotal==100){
+        valorFreteTotal=100.0
+    }
+    valorTotal+=valorFreteTotal
     let html=
     `
+    <div class="valores">
+        <span>Valor:</span>
+        <span id="valor-frete">R$ ${frete}</span>
+    </div>
     `
     for(let i=0;i<produtos.length;i++){
         html+=
@@ -122,11 +129,30 @@ function retornaTotal(){
         `
     }
     sub_total.innerHTML=html
-    total.innerHTML=`<span>Total</span><span id="subtotal">R$ ${valorTotal}</span>`
+    total.innerHTML=`<span>Total</span><span id="subtotal">R$ ${valorTotal.toFixed(2)}</span>`
 }
-
-btnSubmit.addEventListener('click',()=>{
-    
+cep1.addEventListener('input',()=>{
+    sessionStorage.setItem('frete',0)
+    sessionStorage.setItem('soma',false)
+    frete=0
+    retornaTotal()
+    if(cep1.value.length==5){
+        cep2.focus()
+    }
+})
+cep1.addEventListener('keypress',()=>{
+    sessionStorage.setItem('frete',0)
+    console.log(sessionStorage.getItem('frete'))
+})
+cep2.addEventListener('keydown',(e)=>{
+    if(cep2.value.length==0&&e.keyCode===8){
+        cep1.focus()
+    }
+})
+btnSubmit.addEventListener('submit',(e)=>{
+    sessionStorage.setItem('frete',cem)
+    console.log(sessionStorage.getItem('frete'))
+    retornaTotal()
 })
 retornaHtml()
 retornaTotal()
