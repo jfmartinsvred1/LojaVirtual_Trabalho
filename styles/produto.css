@@ -97,6 +97,9 @@ table {
     align-items: center;
     justify-content: space-around;
 }
+body{
+    background-color: rgba(245,245,245,255);
+}
 #marketCart img{
     width: 48px;
     height: 48px;

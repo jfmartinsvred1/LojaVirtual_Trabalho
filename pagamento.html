@@ -1,0 +1,63 @@
+    <!DOCTYPE html>
+    <html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles/pagamento.css">
+        <title>Sneaker`s House</title>
+    </head>
+    <body>
+        <header>
+            <h1>Sneaker's House</h1>
+        </header>
+        <div class="global">
+            <!-- Metodos de Pagamentos -->
+            <div class="payment-methods">
+            <!-- Cartao de Credito -->
+            <div class="payment-method" onclick="togglePaymentDetails('credit-card')">
+                <div class="dot"></div>
+                <p>Cartão de Crédito</p>
+                <img src="images/card-icon.png" alt="Cartão de Crédito">
+            </div>
+            <div class="payment-details" id="credit-card-details">
+                <div class="row">
+                    <input type="text" class="input-cartao numero-cartao" placeholder="Número do cartão" maxlength="19">
+                    <input type="text" class="input-cartao data-validade" placeholder="MM/AAAA" maxlength="5">
+                    <input type="text" class="input-cartao codigo-seguranca" placeholder="Código de segurança" maxlength="3">
+                </div>
+                <input type="text" class="input-cartao nome-cartao" placeholder="Nome no cartão">
+            </div>
+            <!-- Cartao de Debito -->
+            <div class="payment-method" onclick="togglePaymentDetails('debit-card')">
+                <div class="dot"></div>
+                <p>Cartão de Débito</p>
+                <img src="images/card-icon.png" alt="Cartão de Débito">
+            </div>
+            <div class="payment-details" id="debit-card-details">
+                <div class="row">
+                    <input type="text" class="input-cartao numero-cartao" placeholder="Número do cartão" maxlength="19">
+                    <input type="text" class="input-cartao data-validade" placeholder="MM/AAAA" maxlength="5">
+                    <input type="text" class="input-cartao codigo-seguranca" placeholder="Código de segurança" maxlength="3">
+                </div>
+                <input type="text" class="input-cartao nome-cartao" placeholder="Nome no cartão">
+            </div>
+            <!-- PIX -->
+            <div class="payment-method" onclick="togglePaymentDetails('pix')">
+                <div class="dot"></div>
+                <p>PIX</p>
+                <img src="images/pix-icon.png" alt="PIX">
+            </div>
+            <!-- Boleto -->
+            <div class="payment-method" onclick="togglePaymentDetails('boleto')">
+                <div class="dot"></div>
+                <p>Boleto</p>
+                <img src="images/bars-code-icon.png" alt="Boleto">
+            </div>
+            </div>
+            <div class="checkout">
+                <button class="finish-payment">Finalizar Pagamento</button>
+            </div>
+        </div>
+        <script src="scripts/pagamento.js"></script>
+    </body>
+    </html>
