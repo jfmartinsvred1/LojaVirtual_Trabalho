@@ -1,5 +1,11 @@
 const tbody=document.querySelector('.produtos')
-let produtosDoCarrinho = JSON.parse(sessionStorage.getItem('carrinho'))
+let produtosDoCarrinho = JSON.parse(sessionStorage.getItem('carrinho'));
+const h3Inicio = document.querySelector('.h3Inicio')
+
+h3Inicio.addEventListener('click',()=>{
+    window.location.href='../produtos.html'
+})
+
 let produtos = []
 produtosDoCarrinho.forEach(function(nome) {
     produtos.push(nome)
@@ -9,6 +15,9 @@ produtosDoCarrinho.forEach(function(nome) {
 function removerProdutoDoCarrinho(id){
     produtos=produtos.filter(p=>p.id!==id)
     sessionStorage.setItem('carrinho',JSON.stringify(produtos))
+    if(produtos.length<=0){
+        sessionStorage.removeItem('carrinho')
+    }
     window.location.reload()
 }
 
@@ -49,5 +58,12 @@ function retornaHtml(){
         
     }
     tbody.innerHTML=html
+}
+
+
+function retornaTotal(){
+    let html=
+    `
+    `
 }
 retornaHtml()
