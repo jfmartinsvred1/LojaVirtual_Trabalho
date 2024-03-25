@@ -25,6 +25,18 @@ function togglePaymentDetails(method) {
     }
 
     document.getElementById("metodo-selecionado").textContent = formatarNomeMetodoPagamento(method);
+
+    if (method === 'pix') {
+        document.getElementById("card-flag").src = "images/logo-pix.png";
+    } else if (method === 'boleto') {
+        document.getElementById("card-flag").src = "images/logo-boleto.png";
+    } else if (method === 'credit-card') {
+        document.getElementById("card-flag").src = "images/logo-card.png";
+    } else if (method === 'debit-card') {
+        document.getElementById("card-flag").src = "images/logo-card.png";
+    }else {
+        document.getElementById("card-flag").src = "images/nothing.png";
+    }
 }
 
 //Numero do cartao
