@@ -1,3 +1,13 @@
+function formatarNomeMetodoPagamento(method) {
+    var nomes = {
+        "credit-card": "Cartão de Crédito",
+        "debit-card": "Cartão de Débito",
+        "pix": "PIX",
+        "boleto": "Boleto"
+    };
+    return nomes[method.toLowerCase()] || method;
+}
+
 function togglePaymentDetails(method) {
     var details = document.getElementById(method + '-details');
     var allDetails = document.querySelectorAll('.payment-details');
@@ -9,9 +19,23 @@ function togglePaymentDetails(method) {
     });
 
     if (details.style.display === 'none') {
-        details.style.display = 'block';;
+        details.style.display = 'block';
     } else {
         details.style.display = 'none';
+    }
+
+    document.getElementById("metodo-selecionado").textContent = formatarNomeMetodoPagamento(method);
+
+    if (method === 'pix') {
+        document.getElementById("card-flag").src = "images/logo-pix.png";
+    } else if (method === 'boleto') {
+        document.getElementById("card-flag").src = "images/logo-boleto.png";
+    } else if (method === 'credit-card') {
+        document.getElementById("card-flag").src = "images/logo-card.png";
+    } else if (method === 'debit-card') {
+        document.getElementById("card-flag").src = "images/logo-card.png";
+    }else {
+        document.getElementById("card-flag").src = "images/nothing.png";
     }
 }
 
@@ -19,6 +43,30 @@ function togglePaymentDetails(method) {
 var numeroCartao = document.querySelectorAll(".numero-cartao");
 numeroCartao.forEach(function(inputNumeroCartao) {
     inputNumeroCartao.addEventListener("input", function() {
+        var primeiroDigito = this.value.trim().charAt(0);
+        var imagemCartao = document.getElementById("card-flag");
+
+        if(primeiroDigito === "3"){
+            imagemCartao.src = "images/logo-american-express.png"
+            imagemCartao.alt = "Cartão American Express"
+        } 
+        else if (primeiroDigito === "4") {
+            imagemCartao.src = "images/logo-visa.png";
+            imagemCartao.alt = "Cartão Visa";
+        } 
+        else if (primeiroDigito === "5") {
+            imagemCartao.src = "images/logo-master-card.png";
+            imagemCartao.alt = "Cartão Mastercard";
+        } 
+        else if(primeiroDigito === "6"){
+            imagemCartao.src = "images/logo-elo.png"
+            imagemCartao.alt = "Cartão Elo"
+        } 
+        else {
+            imagemCartao.src = "";
+            imagemCartao.alt = "";
+        }
+
         var formattedValue = this.value.replace(/\D/g, '');
         formattedValue = formattedValue.replace(/(\d{4})/g, '$1 ').trim();
         this.value = formattedValue;
@@ -57,3 +105,5 @@ nomeCartao.forEach(function(input){
         this.value = this.value.replace(/[^a-zA-ZÀ-ÖØ-öø-ÿ\s]/g, '');
     })
 });
+
+//Checkout
