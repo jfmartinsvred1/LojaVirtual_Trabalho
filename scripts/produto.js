@@ -28,7 +28,6 @@ function retornaImgs() {
     }
 }
 
-console.log(image)
 retornaImgs()
 
 function retornaHtml() {
@@ -89,6 +88,45 @@ function toggleButton(button) {
     });
 }
 
-function addToCart() {
-    console.log("Produto adicionado ao carrinho!");
+function alteraQuantidadeIcone() {
+    const quantidadeIcone = document.querySelector('.quantidade-cart')
+    let produtosDoCarrinho = JSON.parse(sessionStorage.getItem('carrinho'))
+    let quantidadeTotal = 0
+
+    for (let i = 0; i < produtosDoCarrinho.length; i++) {
+        quantidadeTotal += produtosDoCarrinho[i].quantidade
+    }
+
+    quantidadeIcone.textContent = quantidadeTotal.toString()
+
 }
+
+function addToCart() {
+    let productTemp = produto
+    let produtoDoCarrinho = {
+        id: productTemp.id,
+        img: productTemp.img,
+        nome: productTemp.nome,
+        preco: productTemp.preco,
+        desconto: productTemp.desconto,
+        quantidade: 1
+    }
+    let produtosDoCarrinho = JSON.parse(sessionStorage.getItem('carrinho'))
+    if (produtosDoCarrinho == null) {
+        produtosDoCarrinho = []
+        produtosDoCarrinho.push(produtoDoCarrinho)
+    }
+    else {
+        if (produtosDoCarrinho.find(p => p.id == produto.id) == null) {
+            produtosDoCarrinho.push(produtoDoCarrinho)
+        }
+        else {
+            if (produtosDoCarrinho.find(p => p.id == produto.id).quantidade < 9)
+                produtosDoCarrinho.find(p => p.id == produto.id).quantidade += 1
+        }
+
+    }
+    sessionStorage.setItem('carrinho', JSON.stringify(produtosDoCarrinho))
+    alteraQuantidadeIcone()
+}
+alteraQuantidadeIcone()
