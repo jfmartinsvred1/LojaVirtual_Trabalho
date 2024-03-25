@@ -78,9 +78,17 @@ table {
 }
 #logoNameWrited{
     color: white;
-    font-size: 48px;
+    font-size: 64px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, Courier, monospace;
     padding-left: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    align-items:baseline;
+}
+#logoNameWrited h3{
+    font-size: 32px;
+    cursor: pointer;
 }
 #marketCart{
     padding-right: 24px;
@@ -88,6 +96,9 @@ table {
     display: flex;
     align-items: center;
     justify-content: space-around;
+}
+body{
+    background-color: rgba(245,245,245,255);
 }
 #marketCart img{
     width: 48px;
@@ -98,14 +109,22 @@ table {
     display: flex;
     margin-left: 10px;
     margin-top: 92px;
+    flex-direction: row;
 }
 .productInfo{
     margin-left: 30px;
-    display: inline-flex;
+    display: flex;
+    flex-direction: column;
+    
 }
 .productInfo h1{
     font-style: italic;
-    font-size: 56px;
+    font-size: 64px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.productInfo h2{
+    font-style: italic;
+    font-size: 32px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 .expandingImg{
@@ -145,6 +164,7 @@ table {
 .productImages{
     width: 50%;
     height: auto;
+    cursor: pointer;
 }
 .productGallery{
     display: grid;

@@ -1,8 +1,15 @@
+
 const nomeCliente = document.getElementById("nomeCliente")
 .innerText=`Olá, ${sessionStorage.getItem("nome")}`
 
 const divProducts = document.querySelector('.products')
 const divAlunos = document.querySelector('.gitHubs')
+
+function transicao(id){
+    let produto = produtos.find(produto=>produto.id==id)
+    sessionStorage.setItem("produtoClickado", JSON.stringify(produto))
+    window.location.href="../produto.html"
+}
 
 const produtos= 
 [
@@ -50,6 +57,7 @@ const produtos=
     }
 ]
 
+
 const alunos = [
     {
         nome:"João Victor Fernandes Martins",
@@ -73,6 +81,34 @@ const alunos = [
     },
 ]
 
+function adicionarAoCarrinho(id){
+    let productTemp=produtos.find(p=>p.id==id)
+    let produtoDoCarrinho ={
+        id:productTemp.id,
+        img:productTemp.img,
+        nome:productTemp.nome,
+        preco:productTemp.preco,
+        desconto:productTemp.desconto,
+        quantidade:1
+    }
+    let produtosDoCarrinho = JSON.parse(sessionStorage.getItem('carrinho'))
+    if(produtosDoCarrinho==null){
+        produtosDoCarrinho=[]
+        produtosDoCarrinho.push(produtoDoCarrinho)
+    }
+    else{
+        if(produtosDoCarrinho.find(p=>p.id==id)==null){
+            produtosDoCarrinho.push(produtoDoCarrinho)
+        }
+        else{
+            if(produtosDoCarrinho.find(p=>p.id==id).quantidade < 9)
+            produtosDoCarrinho.find(p=>p.id==id).quantidade+=1
+        }
+            
+    }
+    sessionStorage.setItem('carrinho',JSON.stringify(produtosDoCarrinho))
+}
+
 function retornaHtmlProdutos(){
     let html=``
     for(let i=0;i<=produtos.length-1;i++){
@@ -80,23 +116,25 @@ function retornaHtmlProdutos(){
             let produtoComDesconto = produtos[i].preco * (1-(produtos[i].desconto/100))
             html += `
             <div class="sneaker">
-                <img src=${produtos[i].img} alt=${produtos[i].nome}>
-                <h3>${produtos[i].nome}</h3>
-                <h4 id="promo">De 
+                <img src=${produtos[i].img} alt=${produtos[i].nome} onClick="transicao(${produtos[i].id})">
+                <h3 onClick="transicao(${produtos[i].id})">${produtos[i].nome}</h3>
+                <h4 id="promo" onClick="transicao(${produtos[i].id})">De 
                     <s>
                         R$ ${produtos[i].preco} 
                     </s>
                     por apenas R$ ${produtoComDesconto.toFixed(2)}
                 </h4>
+                <img src="../images/adicionar-produto.png" class="iconeAdcionarProduto" onClick="adicionarAoCarrinho(${produtos[i].id})">
             </div>`
         }
         else{
             html += `
-            <div class="sneaker">
-                <img src=${produtos[i].img} alt=${produtos[i].nome}>
-                <h3>${produtos[i].nome}</h3>
-                <h4>R$ ${produtos[i].preco}</h4>
-            </div>`
+                <div class="sneaker">
+                    <img src=${produtos[i].img} alt=${produtos[i].nome} onClick="transicao(${produtos[i].id})">
+                    <h3 onClick="transicao(${produtos[i].id})">${produtos[i].nome}</h3>
+                    <h4 onClick="transicao(${produtos[i].id})">R$ ${produtos[i].preco}</h4>
+                    <img src="../images/adicionar-produto.png" class="iconeAdcionarProduto" onClick="adicionarAoCarrinho(${produtos[i].id})">
+                </div>`
         }
     }
     divProducts.innerHTML=html
@@ -117,13 +155,3 @@ function retornaFooter(){
 retornaHtmlProdutos()
 retornaFooter()
 
-// let cep="27262570"
-//  async function retornaCep(cep){
-//     const response = await fetch('https://viacep.com.br/ws/27262570/json/',{
-//         method:"GET"
-//     })
-//     const data = response.json()
-//     console.log(await data)
-//  }
-
-//  retornaCep(cep)
