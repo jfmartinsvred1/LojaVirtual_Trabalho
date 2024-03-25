@@ -12,7 +12,7 @@ function togglePaymentDetails(method) {
     var details = document.getElementById(method + '-details');
     var allDetails = document.querySelectorAll('.payment-details');
 
-    allDetails.forEach(function(detail) {
+    allDetails.forEach(function (detail) {
         if (detail.id !== method + '-details') {
             detail.style.display = 'none';
         }
@@ -34,34 +34,34 @@ function togglePaymentDetails(method) {
         document.getElementById("card-flag").src = "images/logo-card.png";
     } else if (method === 'debit-card') {
         document.getElementById("card-flag").src = "images/logo-card.png";
-    }else {
+    } else {
         document.getElementById("card-flag").src = "images/nothing.png";
     }
 }
 
 //Numero do cartao
 var numeroCartao = document.querySelectorAll(".numero-cartao");
-numeroCartao.forEach(function(inputNumeroCartao) {
-    inputNumeroCartao.addEventListener("input", function() {
+numeroCartao.forEach(function (inputNumeroCartao) {
+    inputNumeroCartao.addEventListener("input", function () {
         var primeiroDigito = this.value.trim().charAt(0);
         var imagemCartao = document.getElementById("card-flag");
 
-        if(primeiroDigito === "3"){
+        if (primeiroDigito === "3") {
             imagemCartao.src = "images/logo-american-express.png"
             imagemCartao.alt = "Cartão American Express"
-        } 
+        }
         else if (primeiroDigito === "4") {
             imagemCartao.src = "images/logo-visa.png";
             imagemCartao.alt = "Cartão Visa";
-        } 
+        }
         else if (primeiroDigito === "5") {
             imagemCartao.src = "images/logo-master-card.png";
             imagemCartao.alt = "Cartão Mastercard";
-        } 
-        else if(primeiroDigito === "6"){
+        }
+        else if (primeiroDigito === "6") {
             imagemCartao.src = "images/logo-elo.png"
             imagemCartao.alt = "Cartão Elo"
-        } 
+        }
         else {
             imagemCartao.src = "";
             imagemCartao.alt = "";
@@ -75,8 +75,8 @@ numeroCartao.forEach(function(inputNumeroCartao) {
 
 //Validade do cartao
 var dataValidade = document.querySelectorAll(".data-validade");
-dataValidade.forEach(function(inputDataValidade) {
-    inputDataValidade.addEventListener("input", function(event) {
+dataValidade.forEach(function (inputDataValidade) {
+    inputDataValidade.addEventListener("input", function (event) {
         var inputValue = this.value;
         var numericValue = inputValue.replace(/\D/g, '');
         var formattedValue = '';
@@ -92,18 +92,24 @@ dataValidade.forEach(function(inputDataValidade) {
 
 //Codigo do cartao
 var codigoSeguranca = document.querySelectorAll(".codigo-seguranca");
-codigoSeguranca.forEach(function(input) {
-    input.addEventListener("input", function(event) {
+codigoSeguranca.forEach(function (input) {
+    input.addEventListener("input", function (event) {
         this.value = this.value.replace(/[^0-9]/g, '');
     });
 });
 
 //Nome no cartao
 var nomeCartao = document.querySelectorAll(".nome-cartao");
-nomeCartao.forEach(function(input){
-    input.addEventListener("input", function(event){
+nomeCartao.forEach(function (input) {
+    input.addEventListener("input", function (event) {
         this.value = this.value.replace(/[^a-zA-ZÀ-ÖØ-öø-ÿ\s]/g, '');
     })
+});
+
+const btnFinalizar = document.querySelector('finish-payment')
+
+btnFinalizar.addEventListener("click", () => {
+    window.location.href = './pedido.html'
 });
 
 //Checkout
