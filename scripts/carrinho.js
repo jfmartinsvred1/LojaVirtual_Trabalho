@@ -1,15 +1,41 @@
-const tbody = document.querySelector('.produtos')
-let produtosDoCarrinho = JSON.parse(sessionStorage.getItem('carrinho'))
-let produtos = []
+
+const tbody=document.querySelector('.produtos')
+let produtosDoCarrinho = JSON.parse(sessionStorage.getItem('carrinho'));
+const h3Inicio = document.querySelector('.h3Inicio')
+const cep1=document.getElementById('CEP1')
+const cep2=document.getElementById('CEP2')
+const btnSubmit=document.getElementById('')
 const btnPagamento = document.querySelector('.finalizar-compra')
-produtosDoCarrinho.forEach(function (nome) {
-    produtos.push(nome)
-});
+
+cep1.addEventListener('input',()=>{
+    if(cep1.value.length==5){
+        cep2.focus()
+    }
+})
+cep2.addEventListener('keydown',(e)=>{
+    if(cep2.value.length==0&&e.keyCode===8){
+        cep1.focus()
+    }
+})
+h3Inicio.addEventListener('click',()=>{
+    window.location.href='../produtos.html'
+})
+
+let produtos = []
+if(produtosDoCarrinho!==null){
+    produtosDoCarrinho.forEach(function(nome) {
+        produtos.push(nome)
+      });
+}
 
 
-function removerProdutoDoCarrinho(id) {
-    produtos = produtos.filter(p => p.id !== id)
-    sessionStorage.setItem('carrinho', JSON.stringify(produtos))
+function removerProdutoDoCarrinho(id){
+    produtos=produtos.filter(p=>p.id!==id)
+    sessionStorage.setItem('carrinho',JSON.stringify(produtos))
+    if(produtos.length<=0){
+        sessionStorage.removeItem('carrinho')
+    }
+
     window.location.reload()
 }
 
@@ -61,3 +87,11 @@ if (produtos.length > 0) {
 } else {
     btnPagamento.classList.add('hidden-block')
 }
+
+function retornaTotal(){
+    let html=
+    `
+    `
+}
+retornaHtml()
+
