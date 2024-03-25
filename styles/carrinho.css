@@ -155,9 +155,10 @@ aside footer {
     height: 10px;
 }
 
-.valor-frete {
+.valores {
     padding: 5px;
     margin-bottom: 5px;
+    margin: 3px 0px 3px 3px;
 }
 .produtos{
     
@@ -179,4 +180,9 @@ aside footer {
     font-size: 32px;
     cursor: pointer;
 
+}
+.subtotal{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }

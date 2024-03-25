@@ -33,7 +33,7 @@
                             <th>Preço</th>
                             <th>Quantidade</th>
                             <th>Total</th>
-                            <th>remove</th>
+                            <th>Remover</th>
                         </tr>
                     </thead>
                     <tbody class="produtos">
@@ -48,10 +48,10 @@
                     <div class="info">
                         <span class="calculo-tittle">Não sabe seu cep? Procure <a
                                 href="https://buscacepinter.correios.com.br/app/endereco/index.php" target="_blank">
-                                aqui </a>
+                                 aqui </a>
                         </span>
                     </div>
-                    <form>
+                    <form id="cepForm">
                         <label for="CEP">CEP:
                             <input name="CEP1" id="CEP1" maxlength="5"/>
                             <span>-</span>
@@ -60,12 +60,18 @@
                         <input type="submit" value="Calcular" id="submit" />
                     </form>
                     <div>
-                        <div class="valor-frete">
-                            <span>Valor:</span>
-                            <span> 0</span>
+                        <div class="sub-total">
+                            <div class="valores">
+                                <span>Valor:</span>
+                                <span id="valor-frete">0</span>
+                            </div>
+                            <div class="valores">
+                                <span>Valor:</span>
+                                <span id="valor-frete">0</span>
+                            </div>
                         </div>
-                        <footer>
-                            <span>Subtotal</span><span id="subtotal">R$1099</span>
+                        <footer id="totalCalculado">
+                            <span>Subtotal</span><span id="subtotal">R$ 0,00</span>
                         </footer>
                     </div>
                 </div>

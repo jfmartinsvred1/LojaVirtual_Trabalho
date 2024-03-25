@@ -4,8 +4,11 @@ let produtosDoCarrinho = JSON.parse(sessionStorage.getItem('carrinho'));
 const h3Inicio = document.querySelector('.h3Inicio')
 const cep1=document.getElementById('CEP1')
 const cep2=document.getElementById('CEP2')
-const btnSubmit=document.getElementById('')
+const btnSubmit=document.getElementById('submit')
 const btnPagamento = document.querySelector('.finalizar-compra')
+const sub_total=document.querySelector('.sub-total');
+const total= document.getElementById('totalCalculado')
+
 
 cep1.addEventListener('input',()=>{
     if(cep1.value.length==5){
@@ -29,6 +32,7 @@ if(produtosDoCarrinho!==null){
 }
 
 
+
 function removerProdutoDoCarrinho(id){
     produtos=produtos.filter(p=>p.id!==id)
     sessionStorage.setItem('carrinho',JSON.stringify(produtos))
@@ -40,15 +44,32 @@ function removerProdutoDoCarrinho(id){
 }
 
 function alteraQuantidade(value, id) {
-    if (value <= 9) {
+    if (value <= 9 && value !==0) {
         produtos.find(p => p.id == id).quantidade = value
         sessionStorage.setItem('carrinho', JSON.stringify(produtos))
+        window.location.reload()
+
+    }
+    if(value == 0){
+        sessionStorage.setItem('carrinho', JSON.stringify(produtos.filter(p => p.id !== id)))
+        window.location.reload()
     }
     else {
         window.location.reload()
     }
 
 }
+const frete = 100
+
+function calculaValorTotal(){
+    let valor=0
+    for (let i = 0; i < produtos.length; i++){
+        valor+=(produtos[i].preco*(1-(produtos[i].desconto/100)))*produtos[i].quantidade
+    }
+    return valor.toFixed(2)
+}
+
+const valorTotal = calculaValorTotal() 
 
 function retornaHtml() {
     let html = ``
@@ -66,7 +87,7 @@ function retornaHtml() {
                 R$ ${produtos[i].preco}
             </th>
             <th>
-                <input class="quantidade-input" id="quantidade" onClick="alteraQuantidade(value,${produtos[i].id})"
+                <input class="quantidade-input" id="quantidade" onInput="alteraQuantidade(value,${produtos[i].id})"
                 value=${produtos[i].quantidade} 
                 type="number" placeholder="0">
             </th>
@@ -87,11 +108,26 @@ if (produtos.length > 0) {
 } else {
     btnPagamento.classList.add('hidden-block')
 }
-
 function retornaTotal(){
     let html=
     `
     `
+    for(let i=0;i<produtos.length;i++){
+        html+=
+        `
+        <div class="valores">
+            <span>${produtos[i].nome}:</span>
+            <span id="valor-frete">R$ ${produtos[i].preco} - ${produtos[i].quantidade} X</span>
+        </div>
+        `
+    }
+    sub_total.innerHTML=html
+    total.innerHTML=`<span>Total</span><span id="subtotal">R$ ${valorTotal}</span>`
 }
+
+btnSubmit.addEventListener('click',()=>{
+    
+})
 retornaHtml()
+retornaTotal()
 

@@ -51,7 +51,7 @@ function retornaHtml() {
         </div>
         <div class="productInfo">
             <h1>${produto.nome}</h1>
-            <h2>R$ ${produto.preco}</h2>
+            <h2>R$ ${(((produto.preco * (1 - produto.desconto / 100))) ).toFixed(2)}</h2>
         </div>
     `
     divProduct.innerHTML = htmlFinal
