@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="./styles/index.css">
     <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
 </head>
+
 <body>
     <header class="cabecalho">
         <h1>
@@ -18,12 +20,16 @@
             <label for="nome">Nome</label>
             <input type="text" name="nome" id="nomeCadastro">
             <label for="email">Email</label>
-            <input type="text" name="email" id="emailCadastro" required pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" title="user@example.com">
+            <input type="text" name="email" id="emailCadastro" required
+                pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" title="user@example.com">
             <label for="senha">Senha</label>
-            <input type="password" name="senha" id="senhaCadastro" required pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])[a-zA-Z0-9@#$!]{6,10}$" title="A senha deve conter entre 6 a 10 digitos e pelo menos uma letra maiúscula, uma minúscula e um número">
+            <input type="password" name="senha" id="senhaCadastro" required
+                pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])[a-zA-Z0-9@#$!]{6,10}$"
+                title="A senha deve conter entre 6 a 10 digitos e pelo menos uma letra maiúscula, uma minúscula e um número">
             <button type="submit">Cadastrar</button>
         </form>
     </section>
     <script src="./scripts/cadastro.js"></script>
 </body>
+
 </html>

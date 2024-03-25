@@ -1,5 +1,5 @@
 let produto = JSON.parse((sessionStorage.getItem("produtoClickado")))
-const divProduct= document.querySelector('.product')
+const divProduct = document.querySelector('.product')
 const h3Inicio = document.querySelector('.h3Inicio')
 function expandImage(img) {
     var modal = document.getElementById("myModal");
@@ -12,31 +12,31 @@ function closeModal() {
     document.getElementById("myModal").style.display = "none";
 }
 
-let image =[]
+let image = []
 
-h3Inicio.addEventListener('click',()=>{
-    window.location.href='../produtos.html'
+h3Inicio.addEventListener('click', () => {
+    window.location.href = './produtos.html'
 })
 
-function retornaImgs(){
-    let url=produto.nome.replace(/ /g,"-")
-    for(let i=1;i<=6;i++){
-        image.push(`../images/productsImages/Product${produto.id}/${url}-${i}.jpg`)
+function retornaImgs() {
+    let url = produto.nome.replace(/ /g, "-")
+    for (let i = 1; i <= 6; i++) {
+        image.push(`./images/productsImages/Product${produto.id}/${url}-${i}.jpg`)
     }
 }
 
 console.log(image)
 retornaImgs()
 
-function retornaHtml(){
-    let htmlImgs=``
-    for(let i=0;i<image.length;i++){
-        htmlImgs+=`<img 
+function retornaHtml() {
+    let htmlImgs = ``
+    for (let i = 0; i < image.length; i++) {
+        htmlImgs += `<img 
         src="${image[i]}" 
         alt="Image${i}" onclick="expandImage(this);"> `
     }
-    const htmlFinal=
-    `
+    const htmlFinal =
+        `
         <div id="myModal" class="expandingImg">
             <span class="closeImg" onclick="closeModal()">&times;</span>
             <img id="expandedImg" class="expanded-image">
@@ -51,6 +51,6 @@ function retornaHtml(){
             <h2>R$ ${produto.preco}</h2>
         </div>
     `
-    divProduct.innerHTML=htmlFinal
+    divProduct.innerHTML = htmlFinal
 }
 retornaHtml()
