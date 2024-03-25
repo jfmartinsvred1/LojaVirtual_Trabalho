@@ -47,14 +47,25 @@
                 <p>PIX</p>
                 <img src="images/pix-icon.png" alt="PIX">
             </div>
+            <div class="payment-details" id="pix-details">
+            </div>
             <!-- Boleto -->
             <div class="payment-method" onclick="togglePaymentDetails('boleto')">
                 <div class="dot"></div>
                 <p>Boleto</p>
                 <img src="images/bars-code-icon.png" alt="Boleto">
             </div>
+            <div class="payment-details" id="boleto-details">
+            </div>
             </div>
             <div class="checkout">
+                <div class="checkout-info">
+                    <h2>Método de pagamento selecionado</h2>
+                    <p id="metodo-selecionado"></p>
+                    <div>
+                        <img id="card-flag" src="" alt="">
+                    </div>
+                </div>
                 <button class="finish-payment">Finalizar Pagamento</button>
             </div>
         </div>

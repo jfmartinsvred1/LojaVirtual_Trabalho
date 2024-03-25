@@ -1,5 +1,5 @@
 
-const tbody=document.querySelector('.produtos')
+const tbody = document.querySelector('.produtos')
 let produtosDoCarrinho = JSON.parse(sessionStorage.getItem('carrinho'));
 const h3Inicio = document.querySelector('.h3Inicio')
 const cep1=document.getElementById('CEP1')
@@ -15,10 +15,10 @@ h3Inicio.addEventListener('click',()=>{
 })
 
 let produtos = []
-if(produtosDoCarrinho!==null){
-    produtosDoCarrinho.forEach(function(nome) {
+if (produtosDoCarrinho !== null) {
+    produtosDoCarrinho.forEach(function (nome) {
         produtos.push(nome)
-      });
+    });
 }
 
 function removerProdutoDoCarrinho(id){

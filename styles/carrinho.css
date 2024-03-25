@@ -160,13 +160,12 @@ aside footer {
     margin-bottom: 5px;
     margin: 3px 0px 3px 3px;
 }
-.produtos{
-    
-}
-.h3Inicio{
+
+.h3Inicio {
     color: white;
 }
-.header{
+
+.header {
     color: white;
     font-size: 32px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, Courier, monospace;
@@ -174,9 +173,10 @@ aside footer {
     display: flex;
     flex-wrap: wrap;
     gap: 32px;
-    align-items:baseline;
+    align-items: baseline;
 }
-.header h3{
+
+.header h3 {
     font-size: 32px;
     cursor: pointer;
 
