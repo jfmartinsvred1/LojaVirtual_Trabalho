@@ -107,6 +107,20 @@ function adicionarAoCarrinho(id) {
 
     }
     sessionStorage.setItem('carrinho', JSON.stringify(produtosDoCarrinho))
+    alteraQuantidadeIcone()
+}
+
+function alteraQuantidadeIcone() {
+    const quantidadeIcone = document.querySelector('.quantidade-cart')
+    let produtosDoCarrinho = JSON.parse(sessionStorage.getItem('carrinho'))
+    let quantidadeTotal = 0
+
+    for (let i = 0; i < produtosDoCarrinho.length; i++) {
+        quantidadeTotal += produtosDoCarrinho[i].quantidade
+    }
+
+    quantidadeIcone.textContent = quantidadeTotal.toString()
+
 }
 
 function retornaHtmlProdutos() {
@@ -154,4 +168,5 @@ function retornaFooter() {
 }
 retornaHtmlProdutos()
 retornaFooter()
+alteraQuantidadeIcone()
 
