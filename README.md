@@ -1,6 +1,4 @@
 # LojaVirtual_Trabalho
 
-git add .
-git commit -m ""
-git push -u origin saulo
+loja-virtual-trabalho.vercel.app
 

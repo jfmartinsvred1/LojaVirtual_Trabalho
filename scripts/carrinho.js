@@ -115,7 +115,7 @@ function retornaTotal(){
     let html=
     `
     <div class="valores">
-        <span>Valor:</span>
+        <span>Valor do frete:</span>
         <span id="valor-frete">R$ ${frete}</span>
     </div>
     `
@@ -128,12 +128,12 @@ function retornaTotal(){
         </div>
         `
     }
+    sessionStorage.setItem('valorPagamento',valorFreteTotal)
     sub_total.innerHTML=html
     total.innerHTML=`<span>Total</span><span id="subtotal">R$ ${valorTotal.toFixed(2)}</span>`
 }
 cep1.addEventListener('input',()=>{
     sessionStorage.setItem('frete',0)
-    sessionStorage.setItem('soma',false)
     frete=0
     retornaTotal()
     if(cep1.value.length==5){
@@ -142,16 +142,16 @@ cep1.addEventListener('input',()=>{
 })
 cep1.addEventListener('keypress',()=>{
     sessionStorage.setItem('frete',0)
-    console.log(sessionStorage.getItem('frete'))
+    retornaTotal()
 })
 cep2.addEventListener('keydown',(e)=>{
     if(cep2.value.length==0&&e.keyCode===8){
+        retornaTotal()
         cep1.focus()
     }
 })
 btnSubmit.addEventListener('submit',(e)=>{
     sessionStorage.setItem('frete',cem)
-    console.log(sessionStorage.getItem('frete'))
     retornaTotal()
 })
 retornaHtml()

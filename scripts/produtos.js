@@ -10,6 +10,9 @@ function transicao(id) {
     sessionStorage.setItem("produtoClickado", JSON.stringify(produto))
     window.location.href = "./produto.html"
 }
+function zerarCep(){
+    sessionStorage.setItem('frete',0)
+}
 
 const produtos =
     [
@@ -38,7 +41,7 @@ const produtos =
             id: 4,
             img: "./images/productsImages/Product4/Air-Jordan-1-Retro-Low-OG-1.jpg",
             nome: "Air Jordan 1 Retro Low OG",
-            preco: 1099.00,
+            preco: 1099.99,
             desconto: 0.0
         },
         {
