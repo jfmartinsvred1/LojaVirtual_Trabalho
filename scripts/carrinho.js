@@ -1,32 +1,33 @@
-const tbody=document.querySelector('.produtos')
+const tbody = document.querySelector('.produtos')
 let produtosDoCarrinho = JSON.parse(sessionStorage.getItem('carrinho'))
 let produtos = []
-produtosDoCarrinho.forEach(function(nome) {
+const btnPagamento = document.querySelector('.finalizar-compra')
+produtosDoCarrinho.forEach(function (nome) {
     produtos.push(nome)
-  });
+});
 
 
-function removerProdutoDoCarrinho(id){
-    produtos=produtos.filter(p=>p.id!==id)
-    sessionStorage.setItem('carrinho',JSON.stringify(produtos))
+function removerProdutoDoCarrinho(id) {
+    produtos = produtos.filter(p => p.id !== id)
+    sessionStorage.setItem('carrinho', JSON.stringify(produtos))
     window.location.reload()
 }
 
-function alteraQuantidade(value,id){
-    if(value <=9){
-        produtos.find(p=>p.id==id).quantidade=value
-        sessionStorage.setItem('carrinho',JSON.stringify(produtos))
+function alteraQuantidade(value, id) {
+    if (value <= 9) {
+        produtos.find(p => p.id == id).quantidade = value
+        sessionStorage.setItem('carrinho', JSON.stringify(produtos))
     }
-    else{
+    else {
         window.location.reload()
     }
-    
+
 }
 
-function retornaHtml(){
-    let html=``
-    for(let i=0;i<produtos.length;i++){
-        html = html+`<tr>
+function retornaHtml() {
+    let html = ``
+    for (let i = 0; i < produtos.length; i++) {
+        html = html + `<tr>
             <th>
                 <div class="product">
                   <img src="${produtos[i].img}" width="128px" alt="${produtos[i].nome}">
@@ -43,11 +44,20 @@ function retornaHtml(){
                 value=${produtos[i].quantidade} 
                 type="number" placeholder="0">
             </th>
-            <th id="valor-total">R$ ${(((produtos[i].preco * (1-produtos[i].desconto/100)))*produtos[i].quantidade).toFixed(2)}</th>
+            <th id="valor-total">R$ ${(((produtos[i].preco * (1 - produtos[i].desconto / 100))) * produtos[i].quantidade).toFixed(2)}</th>
             <th class="btn-remove"><i class='bx bxs-x-circle' onClick="removerProdutoDoCarrinho(${produtos[i].id})"></i></th>
         </tr>`
-        
+
     }
-    tbody.innerHTML=html
+    tbody.innerHTML = html
 }
 retornaHtml()
+
+if (produtos.length > 0) {
+    btnPagamento.classList.remove('hidden-block')
+    btnPagamento.addEventListener("click", () => {
+        window.location.href = './pagamento.html'
+    });
+} else {
+    btnPagamento.classList.add('hidden-block')
+}

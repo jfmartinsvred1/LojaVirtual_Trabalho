@@ -118,6 +118,12 @@ table tbody th {
     border: 1px solid;
 }
 
+.hidden-block {
+    cursor: not-allowed;
+    background-color: #666;
+    color: white;
+}
+
 aside header {
     padding: 15px;
     font-size: 20px;
