@@ -9,6 +9,9 @@ produtosDoCarrinho.forEach(function(nome) {
 function removerProdutoDoCarrinho(id){
     produtos=produtos.filter(p=>p.id!==id)
     sessionStorage.setItem('carrinho',JSON.stringify(produtos))
+    if(produtos.length<=0){
+        sessionStorage.
+    }
     window.location.reload()
 }
 
