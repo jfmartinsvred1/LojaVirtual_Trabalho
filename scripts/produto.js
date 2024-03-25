@@ -52,8 +52,43 @@ function retornaHtml() {
         <div class="productInfo">
             <h1>${produto.nome}</h1>
             <h2>R$ ${produto.preco}</h2>
+            <div class="sneakers-sizes">
+                <h3>Selecione um tamanho</h3>
+                <div class="row">
+                    <button class="size-button" onclick="toggleButton(this)">35</button>
+                    <button class="size-button" onclick="toggleButton(this)">36</button>
+                    <button class="size-button" onclick="toggleButton(this)">37</button>
+                    <button class="size-button" onclick="toggleButton(this)">38</button>
+                    <button class="size-button" onclick="toggleButton(this)">39</button>
+                </div>
+                <div class="row">
+                    <button class="size-button" onclick="toggleButton(this)">40</button>
+                    <button class="size-button" onclick="toggleButton(this)">41</button>
+                    <button class="size-button" onclick="toggleButton(this)">42</button>
+                    <button class="size-button" onclick="toggleButton(this)">43</button>
+                    <button class="size-button" onclick="toggleButton(this)">44</button>
+                </div>
+                <div class="add-to-cart">
+                    <button class="add-to-cart-button" onclick="addToCart()">Adicionar ao Carrinho</button>
+                </div>
+            </div>
         </div>
-    `
+        `
     divProduct.innerHTML = htmlFinal
 }
 retornaHtml()
+
+function toggleButton(button) {
+    var buttons = document.querySelectorAll('.size-button');
+    buttons.forEach(function(btn) {
+        if (btn === button) {
+            btn.classList.toggle('active');
+        } else {
+            btn.classList.remove('active');
+        }
+    });
+}
+
+function addToCart() {
+    console.log("Produto adicionado ao carrinho!");
+}
