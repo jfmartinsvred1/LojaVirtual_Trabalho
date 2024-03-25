@@ -153,3 +153,23 @@ aside footer {
     padding: 5px;
     margin-bottom: 5px;
 }
+.produtos{
+    
+}
+.h3Inicio{
+    color: white;
+}
+.header{
+    color: white;
+    font-size: 32px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, Courier, monospace;
+    padding-left: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    align-items:baseline;
+}
+.header h3{
+    font-size: 32px;
+    cursor: pointer;
+}

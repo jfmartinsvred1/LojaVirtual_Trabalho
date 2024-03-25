@@ -16,8 +16,9 @@
 </head>
 
 <body>
-    <header>
+    <header class="header">
         <h1>Sneaker's House</h1>
+        <h3 class="h3Inicio">Inicio</h3>
     </header>
     <main>
         <div class="titulo-cart">
@@ -36,7 +37,6 @@
                         </tr>
                     </thead>
                     <tbody class="produtos">
-                        
                     </tbody>
                 </table>
             </section>
@@ -53,16 +53,21 @@
                     </div>
                     <form>
                         <label for="CEP">CEP:
-                            <input name="CEP" id="CEP" />
+                            <input name="CEP1" id="CEP1" maxlength="5"/>
                             <span>-</span>
-                            <input name="CEP" id="CEP" />
+                            <input name="CEP2" id="CEP2" maxlength="3"/>
                         </label>
                         <input type="submit" value="Calcular" id="submit" />
                     </form>
-                    <div class="valor-frete"><span>Valor:</span><span> XXXX</span></div>
-                    <footer>
-                        <span>Subtotal</span><span id="subtotal">R$1099</span>
-                    </footer>
+                    <div>
+                        <div class="valor-frete">
+                            <span>Valor:</span>
+                            <span> 0</span>
+                        </div>
+                        <footer>
+                            <span>Subtotal</span><span id="subtotal">R$1099</span>
+                        </footer>
+                    </div>
                 </div>
                 <button class="finalizar-compra">Ir para o pagamento</button>
             </aside>
@@ -70,5 +75,4 @@
     </main>
     <script src="./scripts/carrinho.js"></script>
 </body>
-
 </html>
