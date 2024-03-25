@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-function expandImage(img) {
-    var modal = document.getElementById("myModal");
-    var expandedImg = document.getElementById("expandedImg"); 
-=======
 let produto = JSON.parse((sessionStorage.getItem("produtoClickado")))
 const divProduct= document.querySelector('.product')
 const h3Inicio = document.querySelector('.h3Inicio')
@@ -10,7 +5,6 @@ function expandImage(img) {
     var modal = document.getElementById("myModal");
     var expandedImg = document.getElementById("expandedImg");
 
->>>>>>> 8950ff407e5688d5dee583b9536ca5cd004a44d0
     modal.style.display = "block";
     expandedImg.src = img.src;
 }
@@ -18,8 +12,6 @@ function closeModal() {
     document.getElementById("myModal").style.display = "none";
 }
 
-<<<<<<< HEAD
-=======
 let image =[]
 
 h3Inicio.addEventListener('click',()=>{
@@ -62,4 +54,3 @@ function retornaHtml(){
     divProduct.innerHTML=htmlFinal
 }
 retornaHtml()
->>>>>>> 8950ff407e5688d5dee583b9536ca5cd004a44d0
