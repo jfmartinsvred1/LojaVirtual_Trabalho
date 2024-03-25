@@ -118,6 +118,12 @@ table tbody th {
     border: 1px solid;
 }
 
+.hidden-block {
+    cursor: not-allowed;
+    background-color: #666;
+    color: white;
+}
+
 aside header {
     padding: 15px;
     font-size: 20px;
@@ -153,13 +159,12 @@ aside footer {
     padding: 5px;
     margin-bottom: 5px;
 }
-.produtos{
-    
-}
-.h3Inicio{
+
+.h3Inicio {
     color: white;
 }
-.header{
+
+.header {
     color: white;
     font-size: 32px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif, Courier, monospace;
@@ -167,9 +172,11 @@ aside footer {
     display: flex;
     flex-wrap: wrap;
     gap: 32px;
-    align-items:baseline;
+    align-items: baseline;
 }
-.header h3{
+
+.header h3 {
     font-size: 32px;
     cursor: pointer;
+
 }
