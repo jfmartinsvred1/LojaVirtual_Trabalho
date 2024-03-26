@@ -21,11 +21,11 @@
             </div>
             <div class="payment-details" id="credit-card-details">
                 <div class="row">
-                    <input type="text" class="input-cartao numero-cartao" placeholder="Número do cartão" maxlength="19">
-                    <input type="text" class="input-cartao data-validade" placeholder="MM/AAAA" maxlength="5">
-                    <input type="text" class="input-cartao codigo-seguranca" placeholder="Código de segurança" maxlength="3">
+                    <input type="text" class="input-cartao numero-cartao numero-c" placeholder="Número do cartão" maxlength="19">
+                    <input type="text" class="input-cartao data-validade data-c" placeholder="MM/AAAA" maxlength="5">
+                    <input type="text" class="input-cartao codigo-seguranca codigo-c" placeholder="Código de segurança" maxlength="3">
                 </div>
-                <input type="text" class="input-cartao nome-cartao" placeholder="Nome no cartão">
+                <input type="text" class="input-cartao nome-cartao nome-c" placeholder="Nome no cartão">
             </div>
             <!-- Cartao de Debito -->
             <div class="payment-method" onclick="togglePaymentDetails('debit-card')">
@@ -35,11 +35,11 @@
             </div>
             <div class="payment-details" id="debit-card-details">
                 <div class="row">
-                    <input type="text" class="input-cartao numero-cartao" placeholder="Número do cartão" maxlength="19">
-                    <input type="text" class="input-cartao data-validade" placeholder="MM/AAAA" maxlength="5">
-                    <input type="text" class="input-cartao codigo-seguranca" placeholder="Código de segurança" maxlength="3">
+                    <input type="text" class="input-cartao numero-cartao numero-D" placeholder="Número do cartão" maxlength="19">
+                    <input type="text" class="input-cartao data-validade data-D" placeholder="MM/AAAA" maxlength="5">
+                    <input type="text" class="input-cartao codigo-seguranca codigo-D" placeholder="Código de segurança" maxlength="3">
                 </div>
-                <input type="text" class="input-cartao nome-cartao" placeholder="Nome no cartão">
+                <input type="text" class="input-cartao nome-cartao nome-D" placeholder="Nome no cartão">
             </div>
             <!-- PIX -->
             <div class="payment-method" onclick="togglePaymentDetails('pix')">
@@ -62,8 +62,12 @@
                 <div class="checkout-info">
                     <h2>Método de pagamento selecionado</h2>
                     <p id="metodo-selecionado"></p>
-                    <div>
+                    <div id="imgSl">
                         <img id="card-flag" src="" alt="">
+                    </div>
+                    <h3>VALOR</h3>
+                    <div id="valorTot">
+
                     </div>
                 </div>
                 <button class="finish-payment">Finalizar Pagamento</button>
