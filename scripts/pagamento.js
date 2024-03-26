@@ -111,5 +111,3 @@ const btnFinalizar = document.querySelector('.finish-payment')
 btnFinalizar.addEventListener("click", () => {
     window.location.href = './pedido.html'
 });
-
-//Checkout
