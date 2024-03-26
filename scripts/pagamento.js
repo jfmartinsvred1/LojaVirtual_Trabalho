@@ -13,6 +13,13 @@ function formatarNomeMetodoPagamento(method) {
     return nomes[method.toLowerCase()] || method;
 }
 
+function zeraCarrinhoEFrete(){
+    sessionStorage.removeItem("carrinho");
+    sessionStorage.removeItem("frete");
+    sessionStorage.removeItem("produtoClickado");
+    sessionStorage.removeItem("valorTotal");
+}
+
 function togglePaymentDetails(method) {
     metodoSelecionado=method
     var details = document.getElementById(method + '-details');
@@ -165,6 +172,7 @@ const btnFinalizar = document.querySelector('.finish-payment')
 
 btnFinalizar.addEventListener("click", () => {
     if(metodoSelecionado=='pix'||metodoSelecionado=='boleto'){
+        zeraCarrinhoEFrete()
         window.location.href="../pedido.html"
     }
     else if(metodoSelecionado=="credit-card"){
@@ -175,6 +183,7 @@ btnFinalizar.addEventListener("click", () => {
 
         let verificar = validarCartao(nomeCartaoc,dataCartaoc,codigoCartaoc,numeroCartaoc)
         if(verificar){
+            zeraCarrinhoEFrete()
             window.location.href="../pedido.html"
         }
         else{
@@ -190,6 +199,7 @@ btnFinalizar.addEventListener("click", () => {
 
         let verificar = validarCartao(nomeCartaoD,dataCartaoD,codigoCartaoD,numeroCartaoD)
         if(verificar){
+            zeraCarrinhoEFrete()
             window.location.href="../pedido.html"
         }
         else{
