@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="pt-br">
 <head>
-    <meta charset="pt-br">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Sneaker's House</title>
     <link rel="stylesheet" href="./pedido.css">
     <script></script>
 </head>
@@ -22,9 +21,11 @@
 
     <div class="mensagem-pedido">
         <h1>Obrigado por sua compra!</h1>
-        <h2>O número do seu pedido é o: #1234567890</h2>
+        <h2 id="id-pedido">O número do seu pedido é o: #x</h2>
+        <h2 id="timer">Você será redirecionado para a página inicial em <span id="timerNumber"></span> segundos.</h2>
     </div>
     <button class="btnReturn">Início</button>
+    <script src="scripts/pedido.js"></script>
 </body>
 
 </html>
