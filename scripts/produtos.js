@@ -122,9 +122,10 @@ function alteraQuantidadeIcone() {
         quantidadeTotal += produtosDoCarrinho[i].quantidade
     }
 
-    quantidadeIcone.textContent = quantidadeTotal.toString()
+    quantidadeIcone.innerText = quantidadeTotal.toString()
 
 }
+
 
 function retornaHtmlProdutos() {
     let html = ``
@@ -169,6 +170,7 @@ function retornaFooter() {
     }
     divAlunos.innerHTML = html
 }
+
 retornaHtmlProdutos()
 retornaFooter()
 alteraQuantidadeIcone()
