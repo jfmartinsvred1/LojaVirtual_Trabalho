@@ -106,7 +106,7 @@ nomeCartao.forEach(function (input) {
     })
 });
 
-const btnFinalizar = document.querySelector('finish-payment')
+const btnFinalizar = document.querySelector('.finish-payment')
 
 btnFinalizar.addEventListener("click", () => {
     window.location.href = './pedido.html'
