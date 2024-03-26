@@ -11,9 +11,8 @@ formLogin.addEventListener('submit', (e) => {
         window.location.href = './produtos.html'
     }
     else {
-        /*caso login de errado*/
+        alert("Dados Incorretos!")
     }
 
 })
-console.log(emailLogin)
 

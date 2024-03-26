@@ -67,6 +67,11 @@ function retornaHtml() {
                     <button class="size-button" onclick="toggleButton(this)">43</button>
                     <button class="size-button" onclick="toggleButton(this)">44</button>
                 </div>
+                <div class="description">
+                    <p>
+                        ${produto.descricao}
+                    </p>
+                </div>
                 <div class="add-to-cart">
                     <button class="add-to-cart-button" onclick="addToCart()">Adicionar ao Carrinho</button>
                 </div>

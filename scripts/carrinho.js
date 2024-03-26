@@ -10,6 +10,7 @@ const sub_total=document.querySelector('.sub-total');
 const total= document.getElementById('totalCalculado')
 let frete=0
 
+
 h3Inicio.addEventListener('click',()=>{
     window.location.href='../produtos.html'
 })
@@ -84,7 +85,8 @@ function retornaHtml() {
     }
     tbody.innerHTML = html
 }
-if (produtos.length > 0) {
+let valFrete = sessionStorage.getItem('frete')
+if (produtos.length > 0 && valFrete !='0') {
     btnPagamento.classList.remove('hidden-block')
     btnPagamento.addEventListener("click", () => {
         window.location.href = './pagamento.html'
@@ -103,6 +105,7 @@ frete=sessionStorage.getItem('frete')
 if(frete==null||frete=='0'){
     frete=0.00
 }
+
 function retornaTotal(){
     let valorFreteTotal = sessionStorage.getItem('frete')
     if(valorFreteTotal=='0'||valorFreteTotal==0){
@@ -112,6 +115,7 @@ function retornaTotal(){
         valorFreteTotal=100.0
     }
     valorTotal+=valorFreteTotal
+    sessionStorage.setItem('valorTotal',valorTotal.toFixed(2))
     let html=
     `
     <div class="valores">
@@ -128,7 +132,6 @@ function retornaTotal(){
         </div>
         `
     }
-    sessionStorage.setItem('valorPagamento',valorFreteTotal)
     sub_total.innerHTML=html
     total.innerHTML=`<span>Total</span><span id="subtotal">R$ ${valorTotal.toFixed(2)}</span>`
 }
