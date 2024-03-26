@@ -1,3 +1,8 @@
+const patternNome=(/[^a-zA-ZÀ-ÖØ-öø-ÿ\s]/g)
+const divValorTot=document.getElementById('valorTot')
+const valorASerImpresso= sessionStorage.getItem('valorTotal');
+divValorTot.innerHTML=`<h2>R$ ${valorASerImpresso}</h2>`
+let metodoSelecionado=''
 function formatarNomeMetodoPagamento(method) {
     var nomes = {
         "credit-card": "Cartão de Crédito",
@@ -9,6 +14,7 @@ function formatarNomeMetodoPagamento(method) {
 }
 
 function togglePaymentDetails(method) {
+    metodoSelecionado=method
     var details = document.getElementById(method + '-details');
     var allDetails = document.querySelectorAll('.payment-details');
 
@@ -98,18 +104,101 @@ codigoSeguranca.forEach(function (input) {
     });
 });
 
+
+
+function nomeCartaoValidacao(a){
+    if(a.value.length<3){
+        return false
+    }
+    else{
+        return true
+    }
+}
+function codigoSegurancaValidacao(a){
+    if(a.value.length!=3){
+        return false
+    }
+    else{
+        return true
+    }
+}
+function dataCartaoValidacao(a){
+    let data = a.value
+    const [mes,ano]=data.split('/')
+    if(mes>=1&&mes<13&&ano>=24){
+        return true
+    }
+    else{
+        return false
+    }
+}
+function numeroCartaoValidacao(a){
+    if(a.value.length!=19){
+        return false
+    }
+    else{
+        return true
+    }
+}
+function validarCartao(nome,data,cod,numero){
+    let preechidoCorretamente=false;
+    const nameV=nomeCartaoValidacao(nome)
+    const dataV=dataCartaoValidacao(data)
+    const codV=codigoSegurancaValidacao(cod)
+    const numV=numeroCartaoValidacao(numero)
+    if(nameV&&dataV&&codV&&numV){
+        preechidoCorretamente=true
+    }
+
+    return preechidoCorretamente
+}
+
 //Nome no cartao
 var nomeCartao = document.querySelectorAll(".nome-cartao");
 nomeCartao.forEach(function (input) {
     input.addEventListener("input", function (event) {
-        this.value = this.value.replace(/[^a-zA-ZÀ-ÖØ-öø-ÿ\s]/g, '');
+        this.value = this.value.replace(patternNome, '');
     })
 });
 
-const btnFinalizar = document.querySelector('finish-payment')
+const btnFinalizar = document.querySelector('.finish-payment')
 
 btnFinalizar.addEventListener("click", () => {
-    window.location.href = './pedido.html'
+    if(metodoSelecionado=='pix'||metodoSelecionado=='boleto'){
+        window.location.href="../pedido.html"
+    }
+    else if(metodoSelecionado=="credit-card"){
+        const nomeCartaoc = document.querySelector(".nome-c");
+        const numeroCartaoc = document.querySelector(".numero-c");
+        const codigoCartaoc = document.querySelector(".codigo-c");
+        const dataCartaoc = document.querySelector(".data-c");
+
+        let verificar = validarCartao(nomeCartaoc,dataCartaoc,codigoCartaoc,numeroCartaoc)
+        if(verificar){
+            window.location.href="../pedido.html"
+        }
+        else{
+            alert('Dados inválidos!')
+        }
+        
+    }
+    else if(metodoSelecionado=="debit-card"){
+        const nomeCartaoD = document.querySelector(".nome-D");
+        const numeroCartaoD = document.querySelector(".numero-D");
+        const codigoCartaoD = document.querySelector(".codigo-D");
+        const dataCartaoD = document.querySelector(".data-D");
+
+        let verificar = validarCartao(nomeCartaoD,dataCartaoD,codigoCartaoD,numeroCartaoD)
+        if(verificar){
+            window.location.href="../pedido.html"
+        }
+        else{
+            alert('Dados inválidos!')
+        }
+    }
+    else{
+        alert('Dados inválidos!')
+    }
 });
 
-//Checkout
+
