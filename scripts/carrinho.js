@@ -85,7 +85,8 @@ function retornaHtml() {
     }
     tbody.innerHTML = html
 }
-if (produtos.length > 0) {
+let valFrete = sessionStorage.getItem('frete')
+if (produtos.length > 0 && valFrete !='0') {
     btnPagamento.classList.remove('hidden-block')
     btnPagamento.addEventListener("click", () => {
         window.location.href = './pagamento.html'

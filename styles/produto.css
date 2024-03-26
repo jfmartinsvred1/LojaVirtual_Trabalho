@@ -246,3 +246,11 @@ body{
     color: white;
     border: 1px solid;
 }
+.description{
+    margin: 32px;
+}
+.description p{
+    line-height: 32px;
+    font-size: 28px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

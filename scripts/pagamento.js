@@ -157,7 +157,7 @@ function validarCartao(nome,data,cod,numero){
 var nomeCartao = document.querySelectorAll(".nome-cartao");
 nomeCartao.forEach(function (input) {
     input.addEventListener("input", function (event) {
-        this.value = this.value.replace(patternNome, '');
+        this.value = this.value.replace(patternNome, '').toUpperCase();
     })
 });
 
