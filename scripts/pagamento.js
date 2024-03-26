@@ -200,5 +200,3 @@ btnFinalizar.addEventListener("click", () => {
         alert('Dados inválidos!')
     }
 });
-
-
